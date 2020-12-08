@@ -11,7 +11,7 @@ KV_DEFAULT_KEY = "-1"
 KV_PER_SEARCH = 200
 
 def get_title_md5(title):
-    change_pos = re.compile('"|¡°|¡±|,|\.|¡£|~|£¬|,|\?|£¿|:|\(|\)|\[|\]|¡¾|¡¿|-|¡¶|¡·|¡¢|£¡|!|;|£»')
+    change_pos = re.compile('"|ï¿½ï¿½|ï¿½ï¿½|,|\.|ï¿½ï¿½|~|ï¿½ï¿½|,|\?|ï¿½ï¿½|:|\(|\)|\[|\]|ï¿½ï¿½|ï¿½ï¿½|-|ï¿½ï¿½|ï¿½ï¿½|ï¿½ï¿½|ï¿½ï¿½|!|;|ï¿½ï¿½')
     title = change_pos.sub("", title)
     title_md5 = hashlib.md5(title).hexdigest()
     return title_md5
@@ -72,7 +72,7 @@ def mget_title_by_kv(id_list):
 
 def mget_forward_index(id_list,attr_list=None):
     id = [transform_key(x) for x in id_list]
-    conn = httplib.HTTPConnection("kv.sogou-op.org")
+    conn = httplib.HTTPConnection("***")
     request_len = KV_PER_SEARCH
     total_len = len(id_list)
     result = []
@@ -82,7 +82,7 @@ def mget_forward_index(id_list,attr_list=None):
 
         tmp_id_list = id_list[start_index:end_index]
         if len(tmp_id_list) == 0:continue
-        conn.request("POST" ,url="/mget/110216/article_forward_index/", body="\n".join(tmp_id_list))
+        conn.request("POST" ,url="***", body="\n".join(tmp_id_list))
         resp = conn.getresponse()
         if resp.status == 200:
             resp_str = resp.read()

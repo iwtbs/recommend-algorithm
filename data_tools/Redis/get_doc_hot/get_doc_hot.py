@@ -24,7 +24,7 @@ class Hot:
 
 def get_doc_hot_by_thread(docid_list):
     docid_hot_list = []
-    r = redis.Redis(host='a.redis.sogou', port=1680, password='wxheadlines', charset='gbk')
+    r = redis.Redis(host='***', port=1680, password='**', charset='gbk')
     redis_result_list = []
     try:
         redis_result_list = r.mget(docid_list)

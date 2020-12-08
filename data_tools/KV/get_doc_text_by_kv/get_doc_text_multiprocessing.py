@@ -67,7 +67,6 @@ def parallel_deal():
         results = pool.map(get_doc_text, tmp)
         pool.close()
         pool.join()
-        # –¥»Î
         for r in results:
             for i in r:
                 fw_text.write(i + "\n")
